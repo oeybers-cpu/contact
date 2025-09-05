@@ -128,9 +128,41 @@
             0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
             100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
         }
+
+        /* Academic Literacy Home Button */
+        .home-button-tab {
+            position: fixed;
+            top: 60px;
+            left: 25px;
+            z-index: 1001;
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid var(--royal-blue);
+            color: var(--royal-blue);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .home-button-tab:hover {
+            background: rgba(65, 105, 225, 0.2);
+            transform: translateX(-5px);
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Back Button */
         .back-button-tab {
             position: fixed;
-            top: 25px;
+            top: 100px;
             left: 25px;
             z-index: 1001;
             background: rgba(20, 20, 30, 0.7);
@@ -156,19 +188,21 @@
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
+
         /* Main container */
         .main-container {
             width: 100%;
             max-width: 1400px;
-            margin: 100px auto 0;
+            margin: 140px auto 0;
+            padding: 0 20px;
         }
+
         /* Top navigation links */
         .top-nav {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             margin-bottom: 40px;
-            padding: 0 20px;
         }
         .nav-link {
             color: var(--digital-purple);
@@ -193,6 +227,7 @@
             color: var(--light);
             border-color: var(--royal-blue-light);
         }
+
         /* Header with Sun Integration */
         header {
             text-align: center;
@@ -229,6 +264,7 @@
             0% { left: -100%; }
             100% { left: 100%; }
         }
+
         /* Sun container */
         .sun-container {
             position: absolute;
@@ -281,6 +317,7 @@
             50% { opacity: 1; }
             100% { opacity: 0.8; }
         }
+
         /* Header content */
         .header-content {
             position: relative;
@@ -289,6 +326,7 @@
             max-width: 800px;
             margin: 0 auto;
         }
+
         .contact-card {
             background: var(--card-bg);
             border: 1px solid rgba(207, 64, 255, 0.2);
@@ -338,6 +376,7 @@
             font-size: 1rem;
             line-height: 1.6;
         }
+
         /* Improved Card Styles */
         .articles-container {
             display: grid;
@@ -469,6 +508,7 @@
             font-family: 'Orbitron', sans-serif;
             text-align: center;
         }
+
         /* Hero GIF */
         .hero-gif {
             width: 220px;
@@ -480,6 +520,7 @@
             margin: 0 auto;
             object-fit: cover;
         }
+
         .copyright {
             text-align: center;
             padding: 30px 0;
@@ -488,6 +529,7 @@
             border-top: 1px solid rgba(207, 64, 255, 0.2);
             margin-top: 40px;
         }
+
         /* Contact Form Styles */
         .contact-options {
             display: grid;
@@ -542,7 +584,7 @@
             font-weight: 500;
             font-size: 0.95rem;
         }
-        
+
         /* Fixed dropdown styling for contact form */
         #contactForm select {
             background: var(--card-bg) !important;
@@ -557,7 +599,6 @@
             padding-right: 30px !important;
             border: 1px solid rgba(207, 64, 255, 0.3) !important;
         }
-
         #contactForm select:focus {
             background: rgba(20, 20, 30, 0.9) !important;
             border-color: var(--digital-purple) !important;
@@ -568,11 +609,9 @@
         #contactForm select::-webkit-scrollbar {
             width: 10px;
         }
-
         #contactForm select::-webkit-scrollbar-track {
             background: var(--card-bg);
         }
-
         #contactForm select::-webkit-scrollbar-thumb {
             background: var(--digital-purple);
             border-radius: 5px;
@@ -664,6 +703,7 @@
             display: none;
             margin: 20px 0;
         }
+
         /* Responsive Design Improvements */
         @media (max-width: 1200px) {
             .top-nav {
@@ -720,11 +760,17 @@
             body {
                 padding: 15px;
             }
+            .home-button-tab,
             .back-button-tab {
-                top: 15px;
                 left: 15px;
                 padding: 8px 15px;
                 font-size: 0.8rem;
+            }
+            .home-button-tab {
+                top: 50px;
+            }
+            .back-button-tab {
+                top: 85px;
             }
             .card-image {
                 height: 180px;
@@ -733,7 +779,6 @@
                 width: 180px;
                 height: 180px;
             }
-            /* Adjust sun for mobile */
             .sun-container {
                 width: 200px;
                 height: 200px;
@@ -747,9 +792,6 @@
                 width: 200px;
                 height: 200px;
                 box-shadow: 0 0 15px 4px var(--sun-ray-color);
-            }
-            header {
-                min-height: 220px;
             }
             .top-header {
                 padding: 15px 10px;
@@ -767,77 +809,27 @@
                 gap: 10px;
                 padding: 0 10px;
             }
-            .nav-link {
-                padding: 12px 10px;
-                font-size: 0.85rem;
-            }
-            .contact-card {
-                padding: 15px;
-                margin: 15px auto;
-            }
-            .contact-card h2 {
-                font-size: 1.1rem;
-            }
-            .section-title {
-                font-size: 1.4rem;
-            }
-            .article-card h3 {
-                font-size: 1.1rem;
-            }
             .main-container {
-                margin: 130px auto 0;
+                margin: 120px auto 0;
             }
         }
-        /* Special handling for landscape mode on mobile */
         @media (max-height: 500px) and (orientation: landscape) {
-            .top-header {
-                padding: 10px 15px;
-                flex-direction: row;
+            .home-button-tab,
+            .back-button-tab {
+                left: 10px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
             }
-            .top-header h1 {
-                font-size: 1.2rem;
-                padding: 0;
-                margin-top: 0;
+            .home-button-tab {
+                top: 10px;
             }
             .back-button-tab {
-                top: 15px;
-                left: 15px;
-                padding: 6px 12px;
+                top: 40px;
             }
             .main-container {
                 margin: 70px auto 0;
             }
-            header {
-                min-height: 200px;
-            }
-            .sun-container {
-                width: 150px;
-                height: 150px;
-            }
-            .sun-core {
-                width: 60px;
-                height: 60px;
-            }
-            .sun-rays {
-                width: 150px;
-                height: 150px;
-            }
-            .contact-card {
-                padding: 12px;
-                margin: 10px auto;
-            }
-            .contact-card h2 {
-                font-size: 1rem;
-                margin-bottom: 8px;
-            }
-            .contact-card p {
-                font-size: 0.9rem;
-            }
-            .top-nav {
-                margin-bottom: 20px;
-            }
         }
-        /* Special handling for very small devices */
         @media (max-width: 360px) {
             .top-header h1 {
                 font-size: 1.1rem;
@@ -854,23 +846,29 @@
             .card-image {
                 height: 160px;
             }
-            .back-button-tab {
-                padding: 6px 12px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="grid-lines"></div>
-    <!-- New top header with title -->
+
+    <!-- Fixed Top Header -->
     <div class="top-header">
         <h1>Contact Dr. Oscar Eybers</h1>
     </div>
+
+    <!-- Academic Literacy Home Button -->
+    <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-button-tab">
+        <i class="fas fa-home"></i> Academic Literacy Home
+    </a>
+
+    <!-- Back Button -->
     <a href="#" class="back-button-tab" id="backButton">
         <i class="fas fa-arrow-left"></i> Back
     </a>
+
+    <!-- Main Content -->
     <div class="main-container">
-        </div>
         <div class="container">
             <header>
                 <!-- Digital Sun -->
@@ -885,7 +883,7 @@
                     </div>
                 </div>
             </header>
-            
+
             <div class="content-section">
                 <h2 class="section-title">Get in Touch</h2>
                 <div class="articles-container">
@@ -894,7 +892,6 @@
                             <div class="article-content">
                                 <div class="card-text">
                                     <p class="text-center">I welcome inquiries about academic literacy research, supervision opportunities, collaborative projects, and speaking engagements. Please select the option that best describes your reason for contacting me:</p>
-                                    
                                     <div class="contact-options">
                                         <div class="contact-option">
                                             <i class="fas fa-info-circle"></i>
@@ -912,32 +909,28 @@
                                             <p>Propose collaborative research projects, publications, or academic initiatives</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="success-message" id="successMessage">
                                         <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. I will respond to your inquiry as soon as possible.
                                     </div>
-                                    
                                     <div class="error-message" id="errorMessage">
                                         <i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again or contact me directly at oscar.eybers@up.ac.za
                                     </div>
-                                    
-                                    <!-- FORMSPREE INTEGRATION - THIS IS THE KEY PART -->
+
+                                    <!-- FORMSPREE INTEGRATION -->
                                     <form id="contactForm" action="https://formspree.io/f/xkgvppyp" method="POST" class="contact-form">
                                         <div class="form-group">
                                             <label for="name">Full Name</label>
                                             <input type="text" id="name" name="name" required placeholder="Your name">
                                         </div>
-                                        
                                         <div class="form-group">
                                             <label for="email">Email Address</label>
                                             <input type="email" id="email" name="email" required placeholder="your.email@example.com">
                                         </div>
-                                        
                                         <div class="form-group">
                                             <label for="affiliation">Affiliation</label>
                                             <input type="text" id="affiliation" name="affiliation" placeholder="University/Organization">
                                         </div>
-                                        
                                         <div class="form-group">
                                             <label for="subject">Purpose of Contact</label>
                                             <select id="subject" name="subject" required>
@@ -949,15 +942,11 @@
                                                 <option value="other">Other</option>
                                             </select>
                                         </div>
-                                        
-                                        <!-- THIS HIDDEN FIELD ENSURES EMAILS GO TO YOUR ADDRESS -->
                                         <input type="hidden" name="_replyto" value="oscar.eybers@up.ac.za">
-                                        
                                         <div class="form-group full-width">
                                             <label for="message">Your Message</label>
                                             <textarea id="message" name="message" required placeholder="Please provide details about your inquiry..."></textarea>
                                         </div>
-                                        
                                         <div class="form-group full-width">
                                             <button type="submit" class="submit-btn">
                                                 <i class="fas fa-paper-plane"></i> Send Message
@@ -973,7 +962,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="content-section">
                 <h2 class="section-title">Alternative Contact Methods</h2>
                 <div class="articles-container">
@@ -985,12 +974,10 @@
                                 <p><strong>Department:</strong> Centre for Academic Literacy</p>
                                 <p><strong>University:</strong> University of Pretoria</p>
                                 <p><strong>Location:</strong> Pretoria, South Africa</p>
-                                
                                 <div class="citation" style="margin-top: 20px;">
                                     <p><i class="fas fa-quote-left"></i> "I believe in creating meaningful academic partnerships that center African knowledge systems and decolonized approaches to literacy education."</p>
                                     <p>- Dr. Oscar Eybers</p>
                                 </div>
-                                
                                 <div class="article-meta" style="margin-top: 15px;">
                                     <span class="meta-tag">Academic Literacy</span>
                                     <span class="meta-tag">Decolonization</span>
@@ -1002,13 +989,11 @@
                             For official correspondence, please use the university email address
                         </div>
                     </div>
-                    
                     <div class="article-card">
                         <h3><i class="fas fa-link"></i> Professional Profiles</h3>
                         <div class="article-content">
                             <div class="card-text">
                                 <p>Connect with me through these professional platforms:</p>
-                                
                                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
                                     <a href="https://www.researchgate.net/profile/Oscar-Eybers" target="_blank" style="display: flex; align-items: center; padding: 12px; background: rgba(207, 64, 255, 0.08); border-radius: 8px; color: var(--light); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(207, 64, 255, 0.2);">
                                         <i class="fab fa-researchgate" style="font-size: 1.5rem; color: #00c2ff; margin-right: 10px;"></i>
@@ -1019,13 +1004,10 @@
                                         <span>LinkedIn</span>
                                     </a>
                                 </div>
-                                
                                 <p>These platforms provide additional information about my research interests, publications, and professional background.</p>
-                                
                                 <div class="citation">
                                     <p><i class="fas fa-quote-left"></i> I'm particularly interested in connecting with researchers working on decolonizing academic literacy practices in African contexts.</p>
                                 </div>
-                                
                                 <div class="article-meta" style="margin-top: 15px;">
                                     <span class="meta-tag">Networking</span>
                                     <span class="meta-tag">Research</span>
@@ -1039,98 +1021,76 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="copyright">
                 <p>&copy; 2025 Dr Oscar Eybers</p>
             </div>
         </div>
     </div>
+
+    <!-- JavaScript -->
     <script>
-        // Ensure DOM is fully loaded before attaching event handlers
         document.addEventListener('DOMContentLoaded', function() {
-            // Back button functionality
             const backButton = document.getElementById('backButton');
             if (backButton) {
                 backButton.addEventListener('click', function(e) {
                     e.preventDefault();
-                    // Store current scroll position
                     sessionStorage.setItem('scrollPosition', window.scrollY);
-                    // Check if there's a previous page in history
                     if (window.history.length > 1) {
                         window.history.back();
                     } else {
-                        // If no history, redirect to home page
                         window.location.href = '/';
                     }
                 });
             }
-            
-            // Form success/error messages
+
             const successMessage = document.getElementById('successMessage');
             const errorMessage = document.getElementById('errorMessage');
-            
-            // Handle Formspree response
+
             window.addEventListener('load', function() {
                 const urlParams = new URLSearchParams(window.location.search);
                 if (urlParams.has('success')) {
                     successMessage.style.display = 'block';
-                    // Scroll to success message
                     successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    
-                    // Hide success message after 5 seconds
                     setTimeout(() => {
                         successMessage.style.display = 'none';
                     }, 5000);
                 }
-                
                 if (urlParams.has('error')) {
                     errorMessage.style.display = 'block';
-                    // Scroll to error message
                     errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             });
-            
-            // Contact option hover effects
+
             const contactOptions = document.querySelectorAll('.contact-option');
             contactOptions.forEach(option => {
                 option.addEventListener('click', function() {
                     contactOptions.forEach(opt => opt.style.transform = '');
                     this.style.transform = 'translateY(-5px)';
-                    
-                    // Update form subject based on selection
                     const subjectSelect = document.getElementById('subject');
                     if (subjectSelect) {
-                        if (this.querySelector('h4').textContent.includes('More Information')) {
-                            subjectSelect.value = 'information';
-                        } else if (this.querySelector('h4').textContent.includes('Supervision')) {
-                            subjectSelect.value = 'supervision';
-                        } else if (this.querySelector('h4').textContent.includes('Collaboration')) {
-                            subjectSelect.value = 'collaboration';
-                        }
+                        const text = this.querySelector('h4').textContent;
+                        if (text.includes('More Information')) subjectSelect.value = 'information';
+                        else if (text.includes('Supervision')) subjectSelect.value = 'supervision';
+                        else if (text.includes('Collaboration')) subjectSelect.value = 'collaboration';
                     }
                 });
             });
-            
-            // Store scroll position before leaving the page
+
             window.addEventListener('beforeunload', function() {
                 sessionStorage.setItem('scrollPosition', window.scrollY);
             });
-            
-            // Restore scroll position when returning to the page
+
             window.addEventListener('load', function() {
-                var scrollPosition = sessionStorage.getItem('scrollPosition');
+                const scrollPosition = sessionStorage.getItem('scrollPosition');
                 if (scrollPosition !== null) {
                     window.scrollTo(0, parseInt(scrollPosition));
                     sessionStorage.removeItem('scrollPosition');
                 }
             });
-            
-            // Handle orientation changes
+
             window.addEventListener('orientationchange', function() {
-                // Reload on orientation change for better rendering
-                setTimeout(function() {
-                    window.location.reload();
-                }, 300);
+                setTimeout(() => window.location.reload(), 300);
             });
         });
     </script>
