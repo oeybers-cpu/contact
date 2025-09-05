@@ -542,7 +542,60 @@
             font-weight: 500;
             font-size: 0.95rem;
         }
-        input, textarea, select {
+        
+        /* Fixed dropdown styling for contact form */
+        #contactForm select {
+            background: var(--card-bg) !important;
+            color: var(--light) !important;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23cf40ff' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 30px !important;
+            border: 1px solid rgba(207, 64, 255, 0.3) !important;
+        }
+
+        #contactForm select:focus {
+            background: rgba(20, 20, 30, 0.9) !important;
+            border-color: var(--digital-purple) !important;
+            box-shadow: 0 0 0 3px rgba(207, 64, 255, 0.2) !important;
+        }
+
+        /* For Webkit browsers (Chrome, Safari) */
+        #contactForm select::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        #contactForm select::-webkit-scrollbar-track {
+            background: var(--card-bg);
+        }
+
+        #contactForm select::-webkit-scrollbar-thumb {
+            background: var(--digital-purple);
+            border-radius: 5px;
+        }
+
+        /* For Firefox */
+        #contactForm select {
+            scrollbar-width: thin;
+            scrollbar-color: var(--digital-purple) var(--card-bg);
+        }
+
+        /* For IE and Edge */
+        #contactForm select::-ms-expand {
+            display: none;
+        }
+
+        /* For Firefox focus */
+        #contactForm select:-moz-focusring {
+            color: transparent;
+            text-shadow: 0 0 0 var(--light);
+        }
+
+        input, textarea {
             width: 100%;
             padding: 12px 15px;
             background: rgba(255, 255, 255, 0.05);
@@ -553,7 +606,7 @@
             font-size: 0.95rem;
             transition: all 0.3s ease;
         }
-        input:focus, textarea:focus, select:focus {
+        input:focus, textarea:focus {
             outline: none;
             border-color: var(--digital-purple);
             box-shadow: 0 0 0 3px rgba(207, 64, 255, 0.2);
@@ -1123,4 +1176,3 @@
     </script>
 </body>
 </html>
-
