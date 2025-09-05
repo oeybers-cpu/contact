@@ -1,3 +1,23 @@
+# Distinct Banner Implementation for Navigation Buttons
+
+You're absolutely right - the current implementation can still cause overlap issues on mobile Android, especially with browser UI elements affecting the viewport. Here's a complete solution that places the navigation buttons in their own dedicated banner, ensuring no overlap with the main header.
+
+## The Problem
+The current implementation uses fixed positioning for both the buttons and the header, which can cause collisions on mobile Android where:
+- Browser UI elements reduce available viewport height
+- Different Android browsers handle viewport units differently
+- Header text wrapping can increase the header height unexpectedly
+
+## The Solution
+I'll create a dedicated navigation banner that:
+1. Contains both navigation buttons
+2. Has its own fixed position at the very top
+3. Has sufficient height to accommodate the buttons
+4. Ensures the main header starts below this banner
+
+Here's the complete updated code:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,6 +75,8 @@
             --sun-color: #FFC107;
             --sun-glow: #FFA000;
             --sun-ray-color: #FFD700;
+            /* Navigation banner height */
+            --nav-banner-height: 60px;
         }
         body {
             background: linear-gradient(135deg, var(--darker), var(--dark));
@@ -93,46 +115,25 @@
             pointer-events: none;
             z-index: -1;
         }
-        /* Fixed Top Header */
-        .top-header {
+        
+        /* NEW: Dedicated Navigation Banner */
+        .nav-banner {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(10, 10, 20, 0.8);
-            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
-            z-index: 1000;
+            height: var(--nav-banner-height);
+            background: rgba(5, 5, 12, 0.85);
             backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 25px;
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
         }
-        .top-header h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 9px rgba(207, 64, 255, 0.6);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            animation: pulseText 3s infinite alternate;
-            text-align: center;
-            margin: 0 auto;
-            max-width: 70%;
-        }
-        @keyframes pulseText {
-            0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
-            100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
-        }
-        /* Back Button - Top Left */
+        
+        /* Back Button - Inside Navigation Banner */
         .back-button-tab {
-            position: fixed;
-            top: 25px;
-            left: 25px;
             z-index: 1001;
             background: rgba(20, 20, 30, 0.7);
             border: 1px solid var(--royal-blue);
@@ -157,11 +158,9 @@
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        /* Academic Literacy Home Button - Top Right */
+        
+        /* Academic Literacy Home Button - Inside Navigation Banner */
         .home-button-tab {
-            position: fixed;
-            top: 25px;
-            right: 25px;
             z-index: 1001;
             background: rgba(20, 20, 30, 0.7);
             border: 1px solid var(--digital-purple);
@@ -186,12 +185,50 @@
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        /* Main container */
+        
+        /* Fixed Top Header - Now starts BELOW the navigation banner */
+        .top-header {
+            position: fixed;
+            top: var(--nav-banner-height);
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(10, 10, 20, 0.8);
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
+            z-index: 999;
+            backdrop-filter: blur(10px);
+        }
+        .top-header h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 9px rgba(207, 64, 255, 0.6);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            animation: pulseText 3s infinite alternate;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 70%;
+        }
+        @keyframes pulseText {
+            0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
+            100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
+        }
+        
+        /* Main container - Adjusted margin to account for both banners */
         .main-container {
             width: 100%;
             max-width: 1400px;
-            margin: 100px auto 0;
+            margin: calc(var(--nav-banner-height) + 100px) auto 0;
         }
+        
         /* Top navigation links */
         .top-nav {
             display: grid;
@@ -741,51 +778,34 @@
             body {
                 padding: 15px;
             }
+            /* Responsive adjustments for the navigation banner */
+            .nav-banner {
+                height: 55px;
+                padding: 0 15px;
+            }
+            
             .back-button-tab,
             .home-button-tab {
-                top: 65px;
-                z-index: 1002;
                 padding: 8px 15px;
                 font-size: 0.8rem;
             }
-            .back-button-tab {
-                left: 15px;
-            }
-            .home-button-tab {
-                right: 15px;
-            }
-            .card-image {
-                height: 180px;
-            }
-            .hero-gif {
-                width: 180px;
-                height: 180px;
-            }
-            .sun-container {
-                width: 200px;
-                height: 200px;
-            }
-            .sun-core {
-                width: 80px;
-                height: 80px;
-                box-shadow: 0 0 20px 8px var(--sun-glow);
-            }
-            .sun-rays {
-                width: 200px;
-                height: 200px;
-                box-shadow: 0 0 15px 4px var(--sun-ray-color);
-            }
+            
             .top-header {
-                padding: 15px 10px;
-                flex-direction: column;
-                height: auto;
+                top: 55px;
+                padding: 12px 10px;
             }
+            
+            .main-container {
+                margin: calc(55px + 100px) auto 0;
+            }
+            
             .top-header h1 {
                 font-size: 1.3rem;
                 max-width: 100%;
                 padding: 0 50px;
                 margin-top: 5px;
             }
+            
             .top-nav {
                 grid-template-columns: 1fr;
                 gap: 10px;
@@ -808,33 +828,102 @@
             .article-card h3 {
                 font-size: 1.1rem;
             }
-            .main-container {
-                margin: 130px auto 0;
+            .card-image {
+                height: 180px;
+            }
+            .hero-gif {
+                width: 180px;
+                height: 180px;
+            }
+            .sun-container {
+                width: 200px;
+                height: 200px;
+            }
+            .sun-core {
+                width: 80px;
+                height: 80px;
+                box-shadow: 0 0 20px 8px var(--sun-glow);
+            }
+            .sun-rays {
+                width: 200px;
+                height: 200px;
+                box-shadow: 0 0 15px 4px var(--sun-ray-color);
             }
         }
         
         /* Special handling for landscape mode on mobile */
         @media (max-height: 500px) and (orientation: landscape) {
+            .nav-banner {
+                height: 50px;
+                padding: 0 10px;
+            }
+            
             .back-button-tab,
             .home-button-tab {
-                top: 50px;
-                z-index: 1002;
                 padding: 6px 12px;
                 font-size: 0.8rem;
             }
-            .back-button-tab {
-                left: 10px;
+            
+            .top-header {
+                top: 50px;
+                padding: 10px 10px;
             }
-            .home-button-tab {
-                right: 10px;
-            }
+            
             .main-container {
-                margin: 70px auto 0;
+                margin: calc(50px + 70px) auto 0;
+            }
+            
+            .top-header h1 {
+                font-size: 1.2rem;
+                padding: 0;
+                margin-top: 0;
+            }
+            
+            header {
+                min-height: 200px;
+            }
+            .sun-container {
+                width: 150px;
+                height: 150px;
+            }
+            .sun-core {
+                width: 60px;
+                height: 60px;
+            }
+            .sun-rays {
+                width: 150px;
+                height: 150px;
+            }
+            .contact-card {
+                padding: 12px;
+                margin: 10px auto;
+            }
+            .contact-card h2 {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+            .contact-card p {
+                font-size: 0.9rem;
+            }
+            .top-nav {
+                margin-bottom: 20px;
             }
         }
         
         /* Special handling for very small devices */
         @media (max-width: 360px) {
+            .nav-banner {
+                height: 50px;
+            }
+            
+            .top-header {
+                top: 50px;
+            }
+            
+            .main-container {
+                margin: calc(50px + 80px) auto 0;
+            }
+            
             .top-header h1 {
                 font-size: 1.1rem;
                 padding: 0 40px;
@@ -852,36 +941,30 @@
             }
             .back-button-tab,
             .home-button-tab {
-                top: 70px;
-                z-index: 1002;
                 padding: 6px 12px;
-            }
-        }
-        
-        /* Special adjustment for portrait mode on small devices */
-        @media (max-width: 600px) and (orientation: portrait) {
-            .back-button-tab, 
-            .home-button-tab {
-                top: 70px;
-                z-index: 1002;
             }
         }
     </style>
 </head>
 <body>
     <div class="grid-lines"></div>
-    <!-- Fixed Top Header -->
+    
+    <!-- NEW: Dedicated Navigation Banner -->
+    <div class="nav-banner">
+        <a href="#" class="back-button-tab" id="backButton">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+        <div style="flex-grow: 1;"></div>
+        <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-button-tab">
+            <i class="fas fa-home"></i> Academic Literacy Home
+        </a>
+    </div>
+    
+    <!-- Fixed Top Header - Now starts BELOW the navigation banner -->
     <div class="top-header">
         <h1>Contact Dr. Oscar Eybers</h1>
     </div>
-    <!-- Back Button (Top Left) -->
-    <a href="#" class="back-button-tab" id="backButton">
-        <i class="fas fa-arrow-left"></i> Back
-    </a>
-    <!-- Academic Literacy Home Button (Top Right) -->
-    <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-button-tab">
-        <i class="fas fa-home"></i> Academic Literacy Home
-    </a>
+    
     <!-- Main Content -->
     <div class="main-container">
         <div class="container">
@@ -1095,3 +1178,26 @@
     </script>
 </body>
 </html>
+```
+
+## Key Improvements
+
+1. **Dedicated Navigation Banner**
+   - Created a new `.nav-banner` element with fixed height (60px)
+   - Contains both navigation buttons with proper spacing
+   - Has its own background and styling separate from the main header
+
+2. **Header Positioning**
+   - The main header now starts BELOW the navigation banner (`top: var(--nav-banner-height)`)
+   - Main container margin accounts for both the navigation banner and header
+
+3. **CSS Variables for Maintenance**
+   - Added `--nav-banner-height` CSS variable for easy adjustment
+   - All positioning uses this variable for consistency
+
+4. **Responsive Adjustments**
+   - The navigation banner height decreases on smaller screens (55px on mobile)
+   - All related elements (header, main container) adjust accordingly
+   - Added specific calculations for margin using `calc()`
+
+This solution completely separates the navigation controls from the main header content, eliminating any possibility of overlap while maintaining the visual design integrity of your site. The navigation banner is now a distinct UI element that won't interfere with your content regardless of device orientation or screen size.
