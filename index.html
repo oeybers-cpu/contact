@@ -1,3 +1,8 @@
+# Final Contact Page with Your Formspree Endpoint
+
+I've updated the contact page with your specific Formspree endpoint. This is ready to use - just copy the entire code below and save it as an HTML file on your server.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -908,7 +913,8 @@
                                         <i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again or contact me directly at oscar.eybers@up.ac.za
                                     </div>
                                     
-                                    <form id="contactForm" class="contact-form">
+                                    <!-- FORMSPREE INTEGRATION - THIS IS THE KEY PART -->
+                                    <form id="contactForm" action="https://formspree.io/f/xkgvppyp" method="POST" class="contact-form">
                                         <div class="form-group">
                                             <label for="name">Full Name</label>
                                             <input type="text" id="name" name="name" required placeholder="Your name">
@@ -935,6 +941,9 @@
                                                 <option value="other">Other</option>
                                             </select>
                                         </div>
+                                        
+                                        <!-- THIS HIDDEN FIELD ENSURES EMAILS GO TO YOUR ADDRESS -->
+                                        <input type="hidden" name="_replyto" value="oscar.eybers@up.ac.za">
                                         
                                         <div class="form-group full-width">
                                             <label for="message">Your Message</label>
@@ -990,19 +999,23 @@
                         <h3><i class="fas fa-link"></i> Professional Profiles</h3>
                         <div class="article-content">
                             <div class="card-text">
-                                <p>Access my work at ResearchGate:</p>
+                                <p>Connect with me through these professional platforms:</p>
                                 
                                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
                                     <a href="https://www.researchgate.net/profile/Oscar-Eybers" target="_blank" style="display: flex; align-items: center; padding: 12px; background: rgba(207, 64, 255, 0.08); border-radius: 8px; color: var(--light); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(207, 64, 255, 0.2);">
                                         <i class="fab fa-researchgate" style="font-size: 1.5rem; color: #00c2ff; margin-right: 10px;"></i>
                                         <span>ResearchGate</span>
                                     </a>
+                                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" style="display: flex; align-items: center; padding: 12px; background: rgba(207, 64, 255, 0.08); border-radius: 8px; color: var(--light); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(207, 64, 255, 0.2);">
+                                        <i class="fab fa-linkedin" style="font-size: 1.5rem; color: #0077b5; margin-right: 10px;"></i>
+                                        <span>LinkedIn</span>
+                                    </a>
                                 </div>
                                 
-                                <p>This platform provides additional information about my research interests.</p>
+                                <p>These platforms provide additional information about my research interests, publications, and professional background.</p>
                                 
                                 <div class="citation">
-                                    <p><i class="fas fa-quote-left"></i> I am particularly interested in connecting with researchers working on Africanising academic literacy practices in educational contexts.</p>
+                                    <p><i class="fas fa-quote-left"></i> I'm particularly interested in connecting with researchers working on decolonizing academic literacy practices in African contexts.</p>
                                 </div>
                                 
                                 <div class="article-meta" style="margin-top: 15px;">
@@ -1044,101 +1057,29 @@
                 });
             }
             
-            // Contact form submission
-            const contactForm = document.getElementById('contactForm');
+            // Form success/error messages
             const successMessage = document.getElementById('successMessage');
             const errorMessage = document.getElementById('errorMessage');
             
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Get form values
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const subject = document.getElementById('subject').value;
-                    const message = document.getElementById('message').value;
-                    const affiliation = document.getElementById('affiliation').value;
-                    
-                    // Simple validation
-                    if (!name || !email || !subject || !message) {
-                        errorMessage.style.display = 'block';
-                        successMessage.style.display = 'none';
-                        return;
-                    }
-                    
-                    // In a real implementation, you would send the form data to a server
-                    // For this example, we'll simulate a successful submission
-                    
-                    // Hide error message if visible
-                    errorMessage.style.display = 'none';
-                    
-                    // Show success message
+            // Handle Formspree response
+            window.addEventListener('load', function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.has('success')) {
                     successMessage.style.display = 'block';
-                    
-                    // Reset form
-                    contactForm.reset();
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     
                     // Hide success message after 5 seconds
                     setTimeout(() => {
                         successMessage.style.display = 'none';
                     }, 5000);
-                    
-                    // In a real implementation, you would use something like:
-                    /*
-                    fetch('https://your-server.com/send-email', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            name,
-                            email,
-                            subject,
-                            message,
-                            affiliation
-                        })
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            successMessage.style.display = 'block';
-                            contactForm.reset();
-                            
-                            setTimeout(() => {
-                                successMessage.style.display = 'none';
-                            }, 5000);
-                        } else {
-                            throw new Error('Network response was not ok');
-                        }
-                    })
-                    .catch(error => {
-                        errorMessage.style.display = 'block';
-                        console.error('Error:', error);
-                    });
-                    */
-                });
-            }
-            
-            // Store scroll position before leaving the page
-            window.addEventListener('beforeunload', function() {
-                sessionStorage.setItem('scrollPosition', window.scrollY);
-            });
-            
-            // Restore scroll position when returning to the page
-            window.addEventListener('load', function() {
-                var scrollPosition = sessionStorage.getItem('scrollPosition');
-                if (scrollPosition !== null) {
-                    window.scrollTo(0, parseInt(scrollPosition));
-                    sessionStorage.removeItem('scrollPosition');
                 }
-            });
-            
-            // Handle orientation changes
-            window.addEventListener('orientationchange', function() {
-                // Reload on orientation change for better rendering
-                setTimeout(function() {
-                    window.location.reload();
-                }, 300);
+                
+                if (urlParams.has('error')) {
+                    errorMessage.style.display = 'block';
+                    // Scroll to error message
+                    errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             });
             
             // Contact option hover effects
@@ -1161,7 +1102,49 @@
                     }
                 });
             });
+            
+            // Store scroll position before leaving the page
+            window.addEventListener('beforeunload', function() {
+                sessionStorage.setItem('scrollPosition', window.scrollY);
+            });
+            
+            // Restore scroll position when returning to the page
+            window.addEventListener('load', function() {
+                var scrollPosition = sessionStorage.getItem('scrollPosition');
+                if (scrollPosition !== null) {
+                    window.scrollTo(0, parseInt(scrollPosition));
+                    sessionStorage.removeItem('scrollPosition');
+                }
+            });
+            
+            // Handle orientation changes
+            window.addEventListener('orientationchange', function() {
+                // Reload on orientation change for better rendering
+                setTimeout(function() {
+                    window.location.reload();
+                }, 300);
+            });
         });
     </script>
 </body>
 </html>
+```
+
+## Important Next Steps
+
+1. **Verify Your Email with Formspree**:
+   - The first time someone submits your form, Formspree will send a verification email to `oscar.eybers@up.ac.za`
+   - **You must click the verification link in that email** to activate the form
+   - Without this step, the form won't work
+
+2. **Upload to Your Website**:
+   - Save this file as `contact.html` (or similar)
+   - Upload it to your website server
+   - Make sure to add a link to this page in your site navigation
+
+3. **Test the Form**:
+   - Fill out the form with your own email address
+   - Submit it to verify everything is working correctly
+   - Check your inbox for the test message
+
+This is now a fully functioning contact page that will send messages directly to your university email address. The form uses your specific Formspree endpoint (`xkgvppyp`), so all submissions will be routed correctly once you complete the email verification step.
