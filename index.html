@@ -93,7 +93,7 @@
             pointer-events: none;
             z-index: -1;
         }
-        /* New top header with title - Fixed for mobile */
+        /* Fixed Top Header */
         .top-header {
             position: fixed;
             top: 0;
@@ -129,40 +129,10 @@
             100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
         }
 
-        /* Academic Literacy Home Button */
-        .home-button-tab {
-            position: fixed;
-            top: 60px;
-            left: 25px;
-            z-index: 1001;
-            background: rgba(20, 20, 30, 0.7);
-            border: 1px solid var(--royal-blue);
-            color: var(--royal-blue);
-            padding: 10px 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        .home-button-tab:hover {
-            background: rgba(65, 105, 225, 0.2);
-            transform: translateX(-5px);
-            box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
-            color: var(--light);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        /* Back Button */
+        /* Back Button - Top Left */
         .back-button-tab {
             position: fixed;
-            top: 100px;
+            top: 25px;
             left: 25px;
             z-index: 1001;
             background: rgba(20, 20, 30, 0.7);
@@ -189,12 +159,41 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
+        /* Academic Literacy Home Button - Top Right */
+        .home-button-tab {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 1001;
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid var(--digital-purple);
+            color: var(--digital-purple);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(207, 64, 255, 0.3);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .home-button-tab:hover {
+            background: rgba(207, 64, 255, 0.2);
+            transform: translateX(5px);
+            box-shadow: 0 0 20px rgba(207, 64, 255, 0.5);
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
         /* Main container */
         .main-container {
             width: 100%;
             max-width: 1400px;
-            margin: 140px auto 0;
-            padding: 0 20px;
+            margin: 100px auto 0;
         }
 
         /* Top navigation links */
@@ -203,6 +202,7 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             margin-bottom: 40px;
+            padding: 0 20px;
         }
         .nav-link {
             color: var(--digital-purple);
@@ -760,17 +760,17 @@
             body {
                 padding: 15px;
             }
-            .home-button-tab,
-            .back-button-tab {
-                left: 15px;
+            .back-button-tab,
+            .home-button-tab {
+                top: 15px;
                 padding: 8px 15px;
                 font-size: 0.8rem;
             }
-            .home-button-tab {
-                top: 50px;
-            }
             .back-button-tab {
-                top: 85px;
+                left: 15px;
+            }
+            .home-button-tab {
+                right: 15px;
             }
             .card-image {
                 height: 180px;
@@ -809,22 +809,39 @@
                 gap: 10px;
                 padding: 0 10px;
             }
+            .nav-link {
+                padding: 12px 10px;
+                font-size: 0.85rem;
+            }
+            .contact-card {
+                padding: 15px;
+                margin: 15px auto;
+            }
+            .contact-card h2 {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .article-card h3 {
+                font-size: 1.1rem;
+            }
             .main-container {
-                margin: 120px auto 0;
+                margin: 130px auto 0;
             }
         }
         @media (max-height: 500px) and (orientation: landscape) {
-            .home-button-tab,
-            .back-button-tab {
-                left: 10px;
+            .back-button-tab,
+            .home-button-tab {
+                top: 15px;
                 padding: 6px 12px;
                 font-size: 0.8rem;
             }
-            .home-button-tab {
-                top: 10px;
-            }
             .back-button-tab {
-                top: 40px;
+                left: 10px;
+            }
+            .home-button-tab {
+                right: 10px;
             }
             .main-container {
                 margin: 70px auto 0;
@@ -857,14 +874,14 @@
         <h1>Contact Dr. Oscar Eybers</h1>
     </div>
 
-    <!-- Academic Literacy Home Button -->
-    <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-button-tab">
-        <i class="fas fa-home"></i> Academic Literacy Home
-    </a>
-
-    <!-- Back Button -->
+    <!-- Back Button (Top Left) -->
     <a href="#" class="back-button-tab" id="backButton">
         <i class="fas fa-arrow-left"></i> Back
+    </a>
+
+    <!-- Academic Literacy Home Button (Top Right) -->
+    <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-button-tab">
+        <i class="fas fa-home"></i> Academic Literacy Home
     </a>
 
     <!-- Main Content -->
