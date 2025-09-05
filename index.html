@@ -741,7 +741,6 @@
             body {
                 padding: 15px;
             }
-            /* FIXED: Increased top value to prevent collision with header */
             .back-button-tab,
             .home-button-tab {
                 top: 65px;
@@ -814,7 +813,7 @@
             }
         }
         
-        /* FIXED: Special handling for landscape mode on mobile */
+        /* Special handling for landscape mode on mobile */
         @media (max-height: 500px) and (orientation: landscape) {
             .back-button-tab,
             .home-button-tab {
@@ -834,7 +833,7 @@
             }
         }
         
-        /* FIXED: Special handling for very small devices */
+        /* Special handling for very small devices */
         @media (max-width: 360px) {
             .top-header h1 {
                 font-size: 1.1rem;
@@ -859,7 +858,7 @@
             }
         }
         
-        /* FIXED: Special adjustment for portrait mode on small devices */
+        /* Special adjustment for portrait mode on small devices */
         @media (max-width: 600px) and (orientation: portrait) {
             .back-button-tab, 
             .home-button-tab {
@@ -987,7 +986,7 @@
                                 <p><strong>University:</strong> University of Pretoria</p>
                                 <p><strong>Location:</strong> Pretoria, South Africa</p>
                                 <div class="citation" style="margin-top: 20px;">
-                                    <p><i class="fas fa-quote-left"></i> "I believe in creating meaningful academic partnerships that center African knowledge systems and Indigenous approaches to literacy education."</p>
+                                    <p><i class="fas fa-quote-left"></i> "I believe in creating meaningful academic partnerships that center African knowledge systems and decolonized approaches to literacy education."</p>
                                     <p>- Dr. Oscar Eybers</p>
                                 </div>
                                 <div class="article-meta" style="margin-top: 15px;">
@@ -1002,33 +1001,29 @@
                         </div>
                     </div>
                     <div class="article-card">
-                        <h3><i class="fas fa-link"></i> Professional Profiles</h3>
+                        <h3><i class="fas fa-link"></i> Professional Profile</h3>
                         <div class="article-content">
                             <div class="card-text">
-                                <p>Connect with me through these professional platforms:</p>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
-                                    <a href="https://www.researchgate.net/profile/Oscar-Eybers" target="_blank" style="display: flex; align-items: center; padding: 12px; background: rgba(207, 64, 255, 0.08); border-radius: 8px; color: var(--light); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(207, 64, 255, 0.2);">
+                                <p>Connect with me through my primary professional platform:</p>
+                                <div style="display: flex; justify-content: center; margin: 20px 0;">
+                                    <a href="https://www.researchgate.net/profile/Oscar-Eybers" target="_blank" style="display: flex; align-items: center; padding: 12px 20px; background: rgba(207, 64, 255, 0.08); border-radius: 8px; color: var(--light); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(207, 64, 255, 0.2);">
                                         <i class="fab fa-researchgate" style="font-size: 1.5rem; color: #00c2ff; margin-right: 10px;"></i>
-                                        <span>ResearchGate</span>
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" style="display: flex; align-items: center; padding: 12px; background: rgba(207, 64, 255, 0.08); border-radius: 8px; color: var(--light); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(207, 64, 255, 0.2);">
-                                        <i class="fab fa-linkedin" style="font-size: 1.5rem; color: #0077b5; margin-right: 10px;"></i>
-                                        <span>LinkedIn</span>
+                                        <span style="font-size: 1.1rem; font-weight: 500;">ResearchGate Profile</span>
                                     </a>
                                 </div>
-                                <p>These platforms provide additional information about my research interests, publications, and professional background.</p>
+                                <p>My ResearchGate profile provides comprehensive information about my research interests, publications, and academic contributions in the field of academic literacies.</p>
                                 <div class="citation">
-                                    <p><i class="fas fa-quote-left"></i> I'm particularly interested in connecting with researchers working on Africanising academic literacy practices in African contexts.</p>
+                                    <p><i class="fas fa-quote-left"></i> I'm particularly interested in connecting with researchers working on decolonizing academic literacy practices in African contexts.</p>
                                 </div>
                                 <div class="article-meta" style="margin-top: 15px;">
-                                    <span class="meta-tag">Networking</span>
                                     <span class="meta-tag">Research</span>
                                     <span class="meta-tag">Academic Collaboration</span>
+                                    <span class="meta-tag">Publications</span>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer">
-                            Connect professionally through these platforms
+                            My primary professional platform for academic networking and research sharing
                         </div>
                     </div>
                 </div>
@@ -1100,5 +1095,3 @@
     </script>
 </body>
 </html>
-
-All other styling and functionality remains unchanged - only the button positioning has been updated to prevent mobile view collisions.
