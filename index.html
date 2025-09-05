@@ -128,7 +128,6 @@
             0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
             100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
         }
-
         /* Back Button - Top Left */
         .back-button-tab {
             position: fixed;
@@ -158,7 +157,6 @@
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-
         /* Academic Literacy Home Button - Top Right */
         .home-button-tab {
             position: fixed;
@@ -188,14 +186,12 @@
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-
         /* Main container */
         .main-container {
             width: 100%;
             max-width: 1400px;
             margin: 100px auto 0;
         }
-
         /* Top navigation links */
         .top-nav {
             display: grid;
@@ -227,7 +223,6 @@
             color: var(--light);
             border-color: var(--royal-blue-light);
         }
-
         /* Header with Sun Integration */
         header {
             text-align: center;
@@ -264,7 +259,6 @@
             0% { left: -100%; }
             100% { left: 100%; }
         }
-
         /* Sun container */
         .sun-container {
             position: absolute;
@@ -317,7 +311,6 @@
             50% { opacity: 1; }
             100% { opacity: 0.8; }
         }
-
         /* Header content */
         .header-content {
             position: relative;
@@ -326,7 +319,6 @@
             max-width: 800px;
             margin: 0 auto;
         }
-
         .contact-card {
             background: var(--card-bg);
             border: 1px solid rgba(207, 64, 255, 0.2);
@@ -376,7 +368,6 @@
             font-size: 1rem;
             line-height: 1.6;
         }
-
         /* Improved Card Styles */
         .articles-container {
             display: grid;
@@ -508,7 +499,6 @@
             font-family: 'Orbitron', sans-serif;
             text-align: center;
         }
-
         /* Hero GIF */
         .hero-gif {
             width: 220px;
@@ -520,7 +510,6 @@
             margin: 0 auto;
             object-fit: cover;
         }
-
         .copyright {
             text-align: center;
             padding: 30px 0;
@@ -529,7 +518,6 @@
             border-top: 1px solid rgba(207, 64, 255, 0.2);
             margin-top: 40px;
         }
-
         /* Contact Form Styles */
         .contact-options {
             display: grid;
@@ -584,7 +572,6 @@
             font-weight: 500;
             font-size: 0.95rem;
         }
-
         /* Fixed dropdown styling for contact form */
         #contactForm select {
             background: var(--card-bg) !important;
@@ -604,7 +591,6 @@
             border-color: var(--digital-purple) !important;
             box-shadow: 0 0 0 3px rgba(207, 64, 255, 0.2) !important;
         }
-
         /* For Webkit browsers (Chrome, Safari) */
         #contactForm select::-webkit-scrollbar {
             width: 10px;
@@ -616,24 +602,20 @@
             background: var(--digital-purple);
             border-radius: 5px;
         }
-
         /* For Firefox */
         #contactForm select {
             scrollbar-width: thin;
             scrollbar-color: var(--digital-purple) var(--card-bg);
         }
-
         /* For IE and Edge */
         #contactForm select::-ms-expand {
             display: none;
         }
-
         /* For Firefox focus */
         #contactForm select:-moz-focusring {
             color: transparent;
             text-shadow: 0 0 0 var(--light);
         }
-
         input, textarea {
             width: 100%;
             padding: 12px 15px;
@@ -703,7 +685,6 @@
             display: none;
             margin: 20px 0;
         }
-
         /* Responsive Design Improvements */
         @media (max-width: 1200px) {
             .top-nav {
@@ -760,9 +741,11 @@
             body {
                 padding: 15px;
             }
+            /* FIXED: Increased top value to prevent collision with header */
             .back-button-tab,
             .home-button-tab {
-                top: 15px;
+                top: 65px;
+                z-index: 1002;
                 padding: 8px 15px;
                 font-size: 0.8rem;
             }
@@ -830,10 +813,13 @@
                 margin: 130px auto 0;
             }
         }
+        
+        /* FIXED: Special handling for landscape mode on mobile */
         @media (max-height: 500px) and (orientation: landscape) {
             .back-button-tab,
             .home-button-tab {
-                top: 15px;
+                top: 50px;
+                z-index: 1002;
                 padding: 6px 12px;
                 font-size: 0.8rem;
             }
@@ -847,6 +833,8 @@
                 margin: 70px auto 0;
             }
         }
+        
+        /* FIXED: Special handling for very small devices */
         @media (max-width: 360px) {
             .top-header h1 {
                 font-size: 1.1rem;
@@ -863,27 +851,38 @@
             .card-image {
                 height: 160px;
             }
+            .back-button-tab,
+            .home-button-tab {
+                top: 70px;
+                z-index: 1002;
+                padding: 6px 12px;
+            }
+        }
+        
+        /* FIXED: Special adjustment for portrait mode on small devices */
+        @media (max-width: 600px) and (orientation: portrait) {
+            .back-button-tab, 
+            .home-button-tab {
+                top: 70px;
+                z-index: 1002;
+            }
         }
     </style>
 </head>
 <body>
     <div class="grid-lines"></div>
-
     <!-- Fixed Top Header -->
     <div class="top-header">
         <h1>Contact Dr. Oscar Eybers</h1>
     </div>
-
     <!-- Back Button (Top Left) -->
     <a href="#" class="back-button-tab" id="backButton">
         <i class="fas fa-arrow-left"></i> Back
     </a>
-
     <!-- Academic Literacy Home Button (Top Right) -->
     <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-button-tab">
         <i class="fas fa-home"></i> Academic Literacy Home
     </a>
-
     <!-- Main Content -->
     <div class="main-container">
         <div class="container">
@@ -900,7 +899,6 @@
                     </div>
                 </div>
             </header>
-
             <div class="content-section">
                 <h2 class="section-title">Get in Touch</h2>
                 <div class="articles-container">
@@ -926,14 +924,12 @@
                                             <p>Propose collaborative research projects, publications, or academic initiatives</p>
                                         </div>
                                     </div>
-
                                     <div class="success-message" id="successMessage">
                                         <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. I will respond to your inquiry as soon as possible.
                                     </div>
                                     <div class="error-message" id="errorMessage">
                                         <i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again or contact me directly at oscar.eybers@up.ac.za
                                     </div>
-
                                     <!-- FORMSPREE INTEGRATION -->
                                     <form id="contactForm" action="https://formspree.io/f/xkgvppyp" method="POST" class="contact-form">
                                         <div class="form-group">
@@ -979,7 +975,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="content-section">
                 <h2 class="section-title">Alternative Contact Methods</h2>
                 <div class="articles-container">
@@ -1038,13 +1033,11 @@
                     </div>
                 </div>
             </div>
-
             <div class="copyright">
                 <p>&copy; 2025 Dr Oscar Eybers</p>
             </div>
         </div>
     </div>
-
     <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1060,10 +1053,8 @@
                     }
                 });
             }
-
             const successMessage = document.getElementById('successMessage');
             const errorMessage = document.getElementById('errorMessage');
-
             window.addEventListener('load', function() {
                 const urlParams = new URLSearchParams(window.location.search);
                 if (urlParams.has('success')) {
@@ -1078,7 +1069,6 @@
                     errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             });
-
             const contactOptions = document.querySelectorAll('.contact-option');
             contactOptions.forEach(option => {
                 option.addEventListener('click', function() {
@@ -1093,11 +1083,9 @@
                     }
                 });
             });
-
             window.addEventListener('beforeunload', function() {
                 sessionStorage.setItem('scrollPosition', window.scrollY);
             });
-
             window.addEventListener('load', function() {
                 const scrollPosition = sessionStorage.getItem('scrollPosition');
                 if (scrollPosition !== null) {
@@ -1105,7 +1093,6 @@
                     sessionStorage.removeItem('scrollPosition');
                 }
             });
-
             window.addEventListener('orientationchange', function() {
                 setTimeout(() => window.location.reload(), 300);
             });
@@ -1113,3 +1100,5 @@
     </script>
 </body>
 </html>
+
+All other styling and functionality remains unchanged - only the button positioning has been updated to prevent mobile view collisions.
