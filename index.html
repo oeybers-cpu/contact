@@ -3,7 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Dr. Oscar Eybers</title>
+    <title>Contact Dr. Oscar Eybers - Academic Literacies Model</title>
+    <meta name="description" content="Contact Dr. Oscar Eybers for academic literacy consultation, supervision, or collaboration opportunities.">
+    <meta name="keywords" content="contact, academic literacy, consultation, supervision, collaboration, Dr. Oscar Eybers">
+    <meta name="author" content="Dr Oscar Eybers">
+    <link rel="canonical" href="https://yourdomain.com/contact" />
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dr. Oscar Eybers",
+        "url": "https://yourdomain.com/contact",
+        "image": "https://yourdomain.com/images/profile.jpg",
+        "jobTitle": "Academic Literacy Expert",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "University of Pretoria"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "oscar.eybers@up.ac.za",
+            "contactType": "Academic Consultation"
+        }
+    }
+    </script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -145,11 +171,75 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
+        /* NEW: Home button styling - Orange */
+        .home-button-tab {
+            position: fixed;
+            top: 25px;
+            right: 115px;
+            z-index: 1001;
+            background: #FF9800;
+            border: 1px solid #F57C00;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 152, 0, 0.3);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .home-button-tab:hover {
+            background: #F57C00;
+            transform: translateX(5px);
+            box-shadow: 0 0 20px rgba(255, 152, 0, 0.5);
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* NEW: Contact button in top right */
+        .contact-button-tab {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 1001;
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid var(--royal-blue);
+            color: var(--royal-blue);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .contact-button-tab:hover {
+            background: rgba(65, 105, 225, 0.2);
+            transform: translateX(5px);
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
         /* Main container - adjusted top margin since navigation is removed */
         .main-container {
             width: 100%;
             max-width: 1400px;
-            margin: 70px auto 0; /* Reduced from 100px to 70px */
+            margin: 70px auto 0;
             padding: 0 20px;
         }
         
@@ -601,6 +691,16 @@
         <i class="fas fa-arrow-left"></i> Back
     </a>
     
+    <!-- Orange Home button on the right side of the header -->
+    <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-button-tab" id="homeButton">
+        <i class="fas fa-home"></i> Home
+    </a>
+    
+    <!-- Contact button remains in the header -->
+    <a href="https://oeybers-cpu.github.io/contact/" class="contact-button-tab" id="contactButton">
+        <i class="fas fa-envelope"></i> Contact
+    </a>
+    
     <div class="main-container">
         <header>
             <div class="sun-container">
@@ -609,7 +709,7 @@
             </div>
             <div class="header-content">
                 <div class="contact-card">
-                    <h2><i class="fas fa-graduation-cap"></i> Academic Literacy Consultant</h2>
+                    <h2><i class="fas fa-graduation-cap"></i> Academic Literacy Expert</h2>
                     <p>Connect with Dr. Eybers for research collaboration, academic consultation, or speaking engagements.</p>
                 </div>
             </div>
@@ -620,7 +720,7 @@
                 <i class="fas fa-envelope"></i>
                 <h3>Email</h3>
                 <p>Reach out directly for professional inquiries</p>
-                <p><strong>oscar.eybers@up.ac.za</strong></p>
+                <p><strong>oeybers@uwc.ac.za</strong></p>
                 <div class="social-links">
                     <a href="mailto:oeybers@uwc.ac.za" class="social-link" title="Email">
                         <i class="fas fa-envelope"></i>
