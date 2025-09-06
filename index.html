@@ -55,8 +55,6 @@
             --sun-color: #FFC107;
             --sun-glow: #FFA000;
             --sun-ray-color: #FFD700;
-            /* Navigation banner height */
-            --nav-banner-height: 60px;
         }
         body {
             background: linear-gradient(135deg, var(--darker), var(--dark));
@@ -95,25 +93,45 @@
             pointer-events: none;
             z-index: -1;
         }
-        
-        /* NEW: Dedicated Navigation Banner */
-        .nav-banner {
+        /* New top header with title - Fixed for mobile */
+        .top-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: var(--nav-banner-height);
-            background: rgba(5, 5, 12, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
             display: flex;
+            justify-content: center;
             align-items: center;
-            padding: 0 25px;
+            padding: 15px 20px;
+            background: rgba(10, 10, 20, 0.8);
             border-bottom: 1px solid rgba(207, 64, 255, 0.3);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
-        
-        /* Back Button - Inside Navigation Banner */
+        .top-header h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 9px rgba(207, 64, 255, 0.6);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            animation: pulseText 3s infinite alternate;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 70%;
+        }
+        @keyframes pulseText {
+            0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
+            100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
+        }
         .back-button-tab {
+            position: fixed;
+            top: 25px;
+            left: 25px;
             z-index: 1001;
             background: rgba(20, 20, 30, 0.7);
             border: 1px solid var(--royal-blue);
@@ -138,77 +156,12 @@
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        
-        /* Academic Literacy Home Button - Inside Navigation Banner */
-        .home-button-tab {
-            z-index: 1001;
-            background: rgba(20, 20, 30, 0.7);
-            border: 1px solid var(--digital-purple);
-            color: var(--digital-purple);
-            padding: 10px 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 15px rgba(207, 64, 255, 0.3);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        .home-button-tab:hover {
-            background: rgba(207, 64, 255, 0.2);
-            transform: translateX(5px);
-            box-shadow: 0 0 20px rgba(207, 64, 255, 0.5);
-            color: var(--light);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        
-        /* Fixed Top Header - Now starts BELOW the navigation banner */
-        .top-header {
-            position: fixed;
-            top: var(--nav-banner-height);
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(10, 10, 20, 0.8);
-            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
-            z-index: 999;
-            backdrop-filter: blur(10px);
-        }
-        .top-header h1 {
-            font-size: 1.8rem;
-            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 9px rgba(207, 64, 255, 0.6);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            animation: pulseText 3s infinite alternate;
-            text-align: center;
-            margin: 0 auto;
-            max-width: 70%;
-        }
-        @keyframes pulseText {
-            0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
-            100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
-        }
-        
-        /* Main container - Adjusted margin to account for both banners */
+        /* Main container */
         .main-container {
             width: 100%;
             max-width: 1400px;
-            margin: calc(var(--nav-banner-height) + 100px) auto 0;
+            margin: 100px auto 0;
         }
-        
         /* Top navigation links */
         .top-nav {
             display: grid;
@@ -589,51 +542,7 @@
             font-weight: 500;
             font-size: 0.95rem;
         }
-        /* Fixed dropdown styling for contact form */
-        #contactForm select {
-            background: var(--card-bg) !important;
-            color: var(--light) !important;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23cf40ff' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 16px;
-            padding-right: 30px !important;
-            border: 1px solid rgba(207, 64, 255, 0.3) !important;
-        }
-        #contactForm select:focus {
-            background: rgba(20, 20, 30, 0.9) !important;
-            border-color: var(--digital-purple) !important;
-            box-shadow: 0 0 0 3px rgba(207, 64, 255, 0.2) !important;
-        }
-        /* For Webkit browsers (Chrome, Safari) */
-        #contactForm select::-webkit-scrollbar {
-            width: 10px;
-        }
-        #contactForm select::-webkit-scrollbar-track {
-            background: var(--card-bg);
-        }
-        #contactForm select::-webkit-scrollbar-thumb {
-            background: var(--digital-purple);
-            border-radius: 5px;
-        }
-        /* For Firefox */
-        #contactForm select {
-            scrollbar-width: thin;
-            scrollbar-color: var(--digital-purple) var(--card-bg);
-        }
-        /* For IE and Edge */
-        #contactForm select::-ms-expand {
-            display: none;
-        }
-        /* For Firefox focus */
-        #contactForm select:-moz-focusring {
-            color: transparent;
-            text-shadow: 0 0 0 var(--light);
-        }
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             padding: 12px 15px;
             background: rgba(255, 255, 255, 0.05);
@@ -644,7 +553,7 @@
             font-size: 0.95rem;
             transition: all 0.3s ease;
         }
-        input:focus, textarea:focus {
+        input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: var(--digital-purple);
             box-shadow: 0 0 0 3px rgba(207, 64, 255, 0.2);
@@ -758,34 +667,48 @@
             body {
                 padding: 15px;
             }
-            /* Responsive adjustments for the navigation banner */
-            .nav-banner {
-                height: 55px;
-                padding: 0 15px;
-            }
-            
-            .back-button-tab,
-            .home-button-tab {
+            .back-button-tab {
+                top: 15px;
+                left: 15px;
                 padding: 8px 15px;
                 font-size: 0.8rem;
             }
-            
+            .card-image {
+                height: 180px;
+            }
+            .hero-gif {
+                width: 180px;
+                height: 180px;
+            }
+            /* Adjust sun for mobile */
+            .sun-container {
+                width: 200px;
+                height: 200px;
+            }
+            .sun-core {
+                width: 80px;
+                height: 80px;
+                box-shadow: 0 0 20px 8px var(--sun-glow);
+            }
+            .sun-rays {
+                width: 200px;
+                height: 200px;
+                box-shadow: 0 0 15px 4px var(--sun-ray-color);
+            }
+            header {
+                min-height: 220px;
+            }
             .top-header {
-                top: 55px;
-                padding: 12px 10px;
+                padding: 15px 10px;
+                flex-direction: column;
+                height: auto;
             }
-            
-            .main-container {
-                margin: calc(55px + 100px) auto 0;
-            }
-            
             .top-header h1 {
                 font-size: 1.3rem;
                 max-width: 100%;
                 padding: 0 50px;
                 margin-top: 5px;
             }
-            
             .top-nav {
                 grid-template-columns: 1fr;
                 gap: 10px;
@@ -808,57 +731,29 @@
             .article-card h3 {
                 font-size: 1.1rem;
             }
-            .card-image {
-                height: 180px;
-            }
-            .hero-gif {
-                width: 180px;
-                height: 180px;
-            }
-            .sun-container {
-                width: 200px;
-                height: 200px;
-            }
-            .sun-core {
-                width: 80px;
-                height: 80px;
-                box-shadow: 0 0 20px 8px var(--sun-glow);
-            }
-            .sun-rays {
-                width: 200px;
-                height: 200px;
-                box-shadow: 0 0 15px 4px var(--sun-ray-color);
+            .main-container {
+                margin: 130px auto 0;
             }
         }
-        
         /* Special handling for landscape mode on mobile */
         @media (max-height: 500px) and (orientation: landscape) {
-            .nav-banner {
-                height: 50px;
-                padding: 0 10px;
-            }
-            
-            .back-button-tab,
-            .home-button-tab {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-            
             .top-header {
-                top: 50px;
-                padding: 10px 10px;
+                padding: 10px 15px;
+                flex-direction: row;
             }
-            
-            .main-container {
-                margin: calc(50px + 70px) auto 0;
-            }
-            
             .top-header h1 {
                 font-size: 1.2rem;
                 padding: 0;
                 margin-top: 0;
             }
-            
+            .back-button-tab {
+                top: 15px;
+                left: 15px;
+                padding: 6px 12px;
+            }
+            .main-container {
+                margin: 70px auto 0;
+            }
             header {
                 min-height: 200px;
             }
@@ -889,21 +784,8 @@
                 margin-bottom: 20px;
             }
         }
-        
         /* Special handling for very small devices */
         @media (max-width: 360px) {
-            .nav-banner {
-                height: 50px;
-            }
-            
-            .top-header {
-                top: 50px;
-            }
-            
-            .main-container {
-                margin: calc(50px + 80px) auto 0;
-            }
-            
             .top-header h1 {
                 font-size: 1.1rem;
                 padding: 0 40px;
@@ -919,8 +801,7 @@
             .card-image {
                 height: 160px;
             }
-            .back-button-tab,
-            .home-button-tab {
+            .back-button-tab {
                 padding: 6px 12px;
             }
         }
@@ -928,25 +809,55 @@
 </head>
 <body>
     <div class="grid-lines"></div>
-    
-    <!-- NEW: Dedicated Navigation Banner -->
-    <div class="nav-banner">
-        <a href="#" class="back-button-tab" id="backButton">
-            <i class="fas fa-arrow-left"></i> Back
-        </a>
-        <div style="flex-grow: 1;"></div>
-        <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-button-tab">
-            <i class="fas fa-home"></i> Academic Literacy Home
-        </a>
-    </div>
-    
-    <!-- Fixed Top Header - Now starts BELOW the navigation banner -->
+    <!-- New top header with title -->
     <div class="top-header">
         <h1>Contact Dr. Oscar Eybers</h1>
     </div>
-    
-    <!-- Main Content -->
+    <a href="#" class="back-button-tab" id="backButton">
+        <i class="fas fa-arrow-left"></i> Back
+    </a>
     <div class="main-container">
+        <!-- Top Navigation Links -->
+        <div class="top-nav">
+            <a href="https://www.researchgate.net/publication/47343136_The_Academic_Literacies_Model_Theorey_and_Applications" class="nav-link" target="_blank">
+                Theory and applications
+            </a>
+            <a href="https://acadlit-sz3ss6.manus.space/" class="nav-link" target="_blank">
+                Multilingual academic literacy
+            </a>
+            <a href="https://oeybers-cpu.github.io/multimodal_grammar/" class="nav-link" target="_blank">
+                Multimodal academic literacy
+            </a>
+            <a href="https://oeybers-cpu.github.io/ubuntu/" class="nav-link" target="_blank">
+                Ubuntu and academic literacy
+            </a>
+            <a href="https://oeybers-cpu.github.io/Imhotep/" class="nav-link" target="_blank">
+                Imhotep and academic literacy
+            </a>
+            <a href="https://www.researchgate.net/publication/388081527_An_Inclusive_African_Theory_Of_Academic_Literacy" class="nav-link" target="_blank">
+                African theory of academic literacy
+            </a>
+            <a href="https://oeybers-cpu.github.io/Achebe/" class="nav-link" target="_blank">
+                Achebe and academic literacy
+            </a>
+            <a href="https://oeybers-cpu.github.io/ngugi/" class="nav-link" target="_blank">
+                Wa Thiong'o and academic literacy
+            </a>
+            <a href="https://oeybers-cpu.github.io/ancient_writers/" class="nav-link" target="_blank">
+                Ancient African Writing
+            </a>
+            <a href="https://oeybers-cpu.github.io/visual_semiotics/" class="nav-link" target="_blank">
+                African art semiotics
+            </a>
+            <!-- New tab for Academic literacy and economic empowerment -->
+            <a href="https://oeybers-cpu.github.io/AL_econ/" class="nav-link" target="_blank">
+                Academic literacy and economic empowerment
+            </a>
+            <!-- New link for Academic literacy from apartheid -->
+            <a href="https://oeybers-cpu.github.io/acadlit_apartheid/" class="nav-link" target="_blank">
+                Academic literacy from apartheid
+            </a>
+        </div>
         <div class="container">
             <header>
                 <!-- Digital Sun -->
@@ -957,10 +868,11 @@
                 <div class="header-content">
                     <div class="contact-card">
                         <h2><i class="fas fa-envelope"></i> Contact Information</h2>
-                        <p>Reach out for academic literacy consultation, supervision opportunities, or collaborative research projects. I am always interested in connecting with scholars and community members who share my passion for transforming academic literacy approaches.</p>
+                        <p>Reach out for academic literacy consultation, supervision opportunities, or collaborative research projects. I'm always interested in connecting with scholars and students who share my passion for decolonized academic literacy approaches.</p>
                     </div>
                 </div>
             </header>
+            
             <div class="content-section">
                 <h2 class="section-title">Get in Touch</h2>
                 <div class="articles-container">
@@ -969,6 +881,7 @@
                             <div class="article-content">
                                 <div class="card-text">
                                     <p class="text-center">I welcome inquiries about academic literacy research, supervision opportunities, collaborative projects, and speaking engagements. Please select the option that best describes your reason for contacting me:</p>
+                                    
                                     <div class="contact-options">
                                         <div class="contact-option">
                                             <i class="fas fa-info-circle"></i>
@@ -986,26 +899,32 @@
                                             <p>Propose collaborative research projects, publications, or academic initiatives</p>
                                         </div>
                                     </div>
+                                    
                                     <div class="success-message" id="successMessage">
                                         <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. I will respond to your inquiry as soon as possible.
                                     </div>
+                                    
                                     <div class="error-message" id="errorMessage">
                                         <i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again or contact me directly at oscar.eybers@up.ac.za
                                     </div>
-                                    <!-- FORMSPREE INTEGRATION -->
+                                    
+                                    <!-- FORMSPREE INTEGRATION - THIS IS THE KEY PART -->
                                     <form id="contactForm" action="https://formspree.io/f/xkgvppyp" method="POST" class="contact-form">
                                         <div class="form-group">
                                             <label for="name">Full Name</label>
                                             <input type="text" id="name" name="name" required placeholder="Your name">
                                         </div>
+                                        
                                         <div class="form-group">
                                             <label for="email">Email Address</label>
                                             <input type="email" id="email" name="email" required placeholder="your.email@example.com">
                                         </div>
+                                        
                                         <div class="form-group">
                                             <label for="affiliation">Affiliation</label>
                                             <input type="text" id="affiliation" name="affiliation" placeholder="University/Organization">
                                         </div>
+                                        
                                         <div class="form-group">
                                             <label for="subject">Purpose of Contact</label>
                                             <select id="subject" name="subject" required>
@@ -1017,11 +936,15 @@
                                                 <option value="other">Other</option>
                                             </select>
                                         </div>
+                                        
+                                        <!-- THIS HIDDEN FIELD ENSURES EMAILS GO TO YOUR ADDRESS -->
                                         <input type="hidden" name="_replyto" value="oscar.eybers@up.ac.za">
+                                        
                                         <div class="form-group full-width">
                                             <label for="message">Your Message</label>
                                             <textarea id="message" name="message" required placeholder="Please provide details about your inquiry..."></textarea>
                                         </div>
+                                        
                                         <div class="form-group full-width">
                                             <button type="submit" class="submit-btn">
                                                 <i class="fas fa-paper-plane"></i> Send Message
@@ -1037,6 +960,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="content-section">
                 <h2 class="section-title">Alternative Contact Methods</h2>
                 <div class="articles-container">
@@ -1045,16 +969,18 @@
                         <div class="article-content">
                             <div class="card-text">
                                 <p><strong>Email:</strong> <a href="mailto:oscar.eybers@up.ac.za" style="color: var(--digital-purple); text-decoration: underline;">oscar.eybers@up.ac.za</a></p>
-                                <p><strong>Department:</strong> Unit for Academic Literacy</p>
+                                <p><strong>Department:</strong> Centre for Academic Literacy</p>
                                 <p><strong>University:</strong> University of Pretoria</p>
                                 <p><strong>Location:</strong> Pretoria, South Africa</p>
+                                
                                 <div class="citation" style="margin-top: 20px;">
                                     <p><i class="fas fa-quote-left"></i> "I believe in creating meaningful academic partnerships that center African knowledge systems and decolonized approaches to literacy education."</p>
                                     <p>- Dr. Oscar Eybers</p>
                                 </div>
+                                
                                 <div class="article-meta" style="margin-top: 15px;">
                                     <span class="meta-tag">Academic Literacy</span>
-                                    <span class="meta-tag">Decolonisation</span>
+                                    <span class="meta-tag">Decolonization</span>
                                     <span class="meta-tag">Research Collaboration</span>
                                 </div>
                             </div>
@@ -1063,96 +989,135 @@
                             For official correspondence, please use the university email address
                         </div>
                     </div>
+                    
                     <div class="article-card">
-                        <h3><i class="fas fa-link"></i> Professional Profile</h3>
+                        <h3><i class="fas fa-link"></i> Professional Profiles</h3>
                         <div class="article-content">
                             <div class="card-text">
-                                <p>Connect with me through my primary professional platform:</p>
-                                <div style="display: flex; justify-content: center; margin: 20px 0;">
-                                    <a href="https://www.researchgate.net/profile/Oscar-Eybers" target="_blank" style="display: flex; align-items: center; padding: 12px 20px; background: rgba(207, 64, 255, 0.08); border-radius: 8px; color: var(--light); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(207, 64, 255, 0.2);">
+                                <p>Connect with me through these professional platforms:</p>
+                                
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                                    <a href="https://www.researchgate.net/profile/Oscar-Eybers" target="_blank" style="display: flex; align-items: center; padding: 12px; background: rgba(207, 64, 255, 0.08); border-radius: 8px; color: var(--light); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(207, 64, 255, 0.2);">
                                         <i class="fab fa-researchgate" style="font-size: 1.5rem; color: #00c2ff; margin-right: 10px;"></i>
-                                        <span style="font-size: 1.1rem; font-weight: 500;">ResearchGate Profile</span>
+                                        <span>ResearchGate</span>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" style="display: flex; align-items: center; padding: 12px; background: rgba(207, 64, 255, 0.08); border-radius: 8px; color: var(--light); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(207, 64, 255, 0.2);">
+                                        <i class="fab fa-linkedin" style="font-size: 1.5rem; color: #0077b5; margin-right: 10px;"></i>
+                                        <span>LinkedIn</span>
                                     </a>
                                 </div>
-                                <p>My ResearchGate profile provides comprehensive information about my research interests, publications, and academic contributions in the field of academic literacies.</p>
+                                
+                                <p>These platforms provide additional information about my research interests, publications, and professional background.</p>
+                                
                                 <div class="citation">
                                     <p><i class="fas fa-quote-left"></i> I'm particularly interested in connecting with researchers working on decolonizing academic literacy practices in African contexts.</p>
                                 </div>
+                                
                                 <div class="article-meta" style="margin-top: 15px;">
+                                    <span class="meta-tag">Networking</span>
                                     <span class="meta-tag">Research</span>
                                     <span class="meta-tag">Academic Collaboration</span>
-                                    <span class="meta-tag">Publications</span>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer">
-                            My primary professional platform for academic networking and research sharing
+                            Connect professionally through these platforms
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div class="copyright">
                 <p>&copy; 2025 Dr Oscar Eybers</p>
             </div>
         </div>
     </div>
-    <!-- JavaScript -->
     <script>
+        // Ensure DOM is fully loaded before attaching event handlers
         document.addEventListener('DOMContentLoaded', function() {
+            // Back button functionality
             const backButton = document.getElementById('backButton');
             if (backButton) {
                 backButton.addEventListener('click', function(e) {
                     e.preventDefault();
+                    // Store current scroll position
                     sessionStorage.setItem('scrollPosition', window.scrollY);
+                    // Check if there's a previous page in history
                     if (window.history.length > 1) {
                         window.history.back();
                     } else {
+                        // If no history, redirect to home page
                         window.location.href = '/';
                     }
                 });
             }
+            
+            // Form success/error messages
             const successMessage = document.getElementById('successMessage');
             const errorMessage = document.getElementById('errorMessage');
+            
+            // Handle Formspree response
             window.addEventListener('load', function() {
                 const urlParams = new URLSearchParams(window.location.search);
                 if (urlParams.has('success')) {
                     successMessage.style.display = 'block';
+                    // Scroll to success message
                     successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Hide success message after 5 seconds
                     setTimeout(() => {
                         successMessage.style.display = 'none';
                     }, 5000);
                 }
+                
                 if (urlParams.has('error')) {
                     errorMessage.style.display = 'block';
+                    // Scroll to error message
                     errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             });
+            
+            // Contact option hover effects
             const contactOptions = document.querySelectorAll('.contact-option');
             contactOptions.forEach(option => {
                 option.addEventListener('click', function() {
                     contactOptions.forEach(opt => opt.style.transform = '');
                     this.style.transform = 'translateY(-5px)';
+                    
+                    // Update form subject based on selection
                     const subjectSelect = document.getElementById('subject');
                     if (subjectSelect) {
-                        const text = this.querySelector('h4').textContent;
-                        if (text.includes('More Information')) subjectSelect.value = 'information';
-                        else if (text.includes('Supervision')) subjectSelect.value = 'supervision';
-                        else if (text.includes('Collaboration')) subjectSelect.value = 'collaboration';
+                        if (this.querySelector('h4').textContent.includes('More Information')) {
+                            subjectSelect.value = 'information';
+                        } else if (this.querySelector('h4').textContent.includes('Supervision')) {
+                            subjectSelect.value = 'supervision';
+                        } else if (this.querySelector('h4').textContent.includes('Collaboration')) {
+                            subjectSelect.value = 'collaboration';
+                        }
                     }
                 });
             });
+            
+            // Store scroll position before leaving the page
             window.addEventListener('beforeunload', function() {
                 sessionStorage.setItem('scrollPosition', window.scrollY);
             });
+            
+            // Restore scroll position when returning to the page
             window.addEventListener('load', function() {
-                const scrollPosition = sessionStorage.getItem('scrollPosition');
+                var scrollPosition = sessionStorage.getItem('scrollPosition');
                 if (scrollPosition !== null) {
                     window.scrollTo(0, parseInt(scrollPosition));
                     sessionStorage.removeItem('scrollPosition');
                 }
             });
+            
+            // Handle orientation changes
             window.addEventListener('orientationchange', function() {
-                setTimeout(() => window.location.reload(), 300);
+                // Reload on orientation change for better rendering
+                setTimeout(function() {
+                    window.location.reload();
+                }, 300);
             });
         });
     </script>
