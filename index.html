@@ -7,7 +7,7 @@
     <meta name="description" content="Contact Dr. Oscar Eybers for academic literacy consultation, supervision, or collaboration opportunities.">
     <meta name="keywords" content="contact, academic literacy, consultation, supervision, collaboration, Dr. Oscar Eybers">
     <meta name="author" content="Dr Oscar Eybers">
-    <link rel="canonical" href="https://yourdomain.com/contact" />
+    <link rel="canonical" href="https://oeybers-cpu.github.io/a_lit_models/contact" />
     
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
@@ -15,8 +15,8 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Dr. Oscar Eybers",
-        "url": "https://yourdomain.com/contact",
-        "image": "https://yourdomain.com/images/profile.jpg",
+        "url": "https://oeybers-cpu.github.io/a_lit_models/contact",
+        "image": "https://oeybers-cpu.github.io/a_lit_models/images/profile.jpg",
         "jobTitle": "Academic Literacy Expert",
         "worksFor": {
             "@type": "Organization",
@@ -170,8 +170,8 @@
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        
-        /* NEW: Home button styling - Orange */
+
+        /* Home button styling - Orange */
         .home-button-tab {
             position: fixed;
             top: 25px;
@@ -204,7 +204,7 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
-        /* NEW: Contact button in top right */
+        /* Contact button in top right */
         .contact-button-tab {
             position: fixed;
             top: 25px;
@@ -235,7 +235,7 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
-        /* Main container - adjusted top margin since navigation is removed */
+        /* Main container */
         .main-container {
             width: 100%;
             max-width: 1400px;
@@ -635,7 +635,6 @@
             }
         }
         
-        /* Special handling for landscape mode on mobile */
         @media (max-height: 500px) and (orientation: landscape) {
             .top-header {
                 padding: 10px 15px;
@@ -682,7 +681,7 @@
 <body>
     <div class="grid-lines"></div>
     
-    <!-- New top header with title -->
+    <!-- Top header -->
     <div class="top-header">
         <h1>Contact Dr. Oscar Eybers</h1>
     </div>
@@ -691,12 +690,16 @@
         <i class="fas fa-arrow-left"></i> Back
     </a>
     
-    <!-- Orange Home button on the right side of the header -->
-    <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-button-tab" id="homeButton">
+    <!-- Home button -->
+    <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-button-tab">
         <i class="fas fa-home"></i> Home
     </a>
     
-     
+    <!-- Contact tab (optional, currently not linked) -->
+    <a href="#" class="contact-button-tab" style="pointer-events: none; opacity: 0.6; cursor: default;">
+        <i class="fas fa-envelope"></i> Contact
+    </a>
+
     <div class="main-container">
         <header>
             <div class="sun-container">
@@ -716,9 +719,9 @@
                 <i class="fas fa-envelope"></i>
                 <h3>Email</h3>
                 <p>Reach out directly for professional inquiries</p>
-                <p><strong>oeybers@uwc.ac.za</strong></p>
+                <p><strong>oscar.eybers@up.ac.za</strong></p>
                 <div class="social-links">
-                    <a href="mailto:oeybers@uwc.ac.za" class="social-link" title="Email">
+                    <a href="mailto:oscar.eybers@up.ac.za" class="social-link" title="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
                     <a href="https://www.researchgate.net/profile/Oscar-Eybers" target="_blank" class="social-link" title="ResearchGate">
@@ -731,7 +734,7 @@
                 <i class="fas fa-university"></i>
                 <h3>Academic Profile</h3>
                 <p>View my research and publications</p>
-                <p><strong>University of the Western Cape</strong></p>
+                <p><strong>University of Pretoria</strong></p>
                 <div class="social-links">
                     <a href="https://www.researchgate.net/profile/Oscar-Eybers" target="_blank" style="display: flex; align-items: center; padding: 12px; background: rgba(207, 64, 255, 0.08); border-radius: 8px; color: var(--light); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(207, 64, 255, 0.2);">
                         <i class="fab fa-researchgate" style="font-size: 1.5rem; color: #00c2ff; margin-right: 10px;"></i>
@@ -787,29 +790,25 @@
             </div>
             
             <div class="error-message" id="errorMessage">
-                Sorry, there was an error sending your message. Please try again or contact directly at oeybers@uwc.ac.za.
+                Sorry, there was an error sending your message. Please try again or contact directly at oscar.eybers@up.ac.za.
             </div>
         </div>
     </div>
 
     <script>
-        // Back button functionality
         document.addEventListener('DOMContentLoaded', function() {
             const backButton = document.getElementById('backButton');
             if (backButton) {
                 backButton.addEventListener('click', function(e) {
                     e.preventDefault();
-                    // Check if there's a previous page in history
                     if (window.history.length > 1) {
                         window.history.back();
                     } else {
-                        // If no history, redirect to home page
-                        window.location.href = '/';
+                        window.location.href = 'https://oeybers-cpu.github.io/a_lit_models/';
                     }
                 });
             }
             
-            // Form submission handling
             const contactForm = document.getElementById('contactForm');
             const successMessage = document.getElementById('successMessage');
             const errorMessage = document.getElementById('errorMessage');
@@ -818,22 +817,13 @@
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // In a real implementation, you would send the form data to a server
-                    // For this demo, we'll just show the success message
-                    
-                    // Hide any previous messages
                     successMessage.style.display = 'none';
                     errorMessage.style.display = 'none';
                     
-                    // Simulate form submission
                     setTimeout(() => {
-                        // Reset form
                         contactForm.reset();
-                        
-                        // Show success message
                         successMessage.style.display = 'block';
                         
-                        // Hide success message after 5 seconds
                         setTimeout(() => {
                             successMessage.style.display = 'none';
                         }, 5000);
@@ -841,26 +831,20 @@
                 });
             }
             
-            // Store scroll position before leaving the page
             window.addEventListener('beforeunload', function() {
                 sessionStorage.setItem('scrollPosition', window.scrollY);
             });
             
-            // Restore scroll position when returning to the page
             window.addEventListener('load', function() {
-                var scrollPosition = sessionStorage.getItem('scrollPosition');
+                const scrollPosition = sessionStorage.getItem('scrollPosition');
                 if (scrollPosition !== null) {
                     window.scrollTo(0, parseInt(scrollPosition));
                     sessionStorage.removeItem('scrollPosition');
                 }
             });
             
-            // Handle orientation changes
             window.addEventListener('orientationchange', function() {
-                // Reload on orientation change for better rendering
-                setTimeout(function() {
-                    window.location.reload();
-                }, 300);
+                setTimeout(() => window.location.reload(), 300);
             });
         });
     </script>
