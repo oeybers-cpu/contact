@@ -7,7 +7,7 @@
     <meta name="description" content="Contact Dr. Oscar Eybers for academic literacy consultation, supervision, or collaboration opportunities.">
     <meta name="keywords" content="contact, academic literacy, consultation, supervision, collaboration, Dr. Oscar Eybers">
     <meta name="author" content="Dr Oscar Eybers">
-    <link rel="canonical" href="https://oeybers-cpu.github.io/a_lit_models/contact" />
+    <link rel="canonical" href="https://yourdomain.com/contact" />
     
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
@@ -15,8 +15,8 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Dr. Oscar Eybers",
-        "url": "https://oeybers-cpu.github.io/a_lit_models/contact",
-        "image": "https://oeybers-cpu.github.io/a_lit_models/images/profile.jpg",
+        "url": "https://yourdomain.com/contact",
+        "image": "https://yourdomain.com/images/profile.jpg",
         "jobTitle": "Academic Literacy Expert",
         "worksFor": {
             "@type": "Organization",
@@ -40,6 +40,7 @@
         }
         
         :root {
+            /* Color Variables */
             --primary: #4fc3f7;
             --secondary: #29b6f6;
             --accent: #0288d1;
@@ -51,6 +52,12 @@
             --digital-purple: #cf40ff;
             --royal-blue: #4169E1;
             --royal-blue-light: #6c8eff;
+            --aqua-blue: #00FFFF;
+            --card-padding: 20px;
+            --card-gap: 25px;
+            --nav-banner-height: 60px;
+            
+            /* Sun variables */
             --sun-color: #FFC107;
             --sun-glow: #FFA000;
             --sun-ray-color: #FFD700;
@@ -96,7 +103,7 @@
             z-index: -1;
         }
         
-        /* Fixed top header */
+        /* New top header with title - Fixed for mobile */
         .top-header {
             position: fixed;
             top: 0;
@@ -134,7 +141,6 @@
             100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
         }
         
-        /* Back button */
         .back-button-tab {
             position: fixed;
             top: 25px;
@@ -164,12 +170,12 @@
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-
-        /* Home button - Orange */
+        
+        /* NEW: Home button styling - Orange */
         .home-button-tab {
             position: fixed;
             top: 25px;
-            right: 25px;
+            right: 115px;
             z-index: 1001;
             background: #FF9800;
             border: 1px solid #F57C00;
@@ -198,7 +204,38 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
-        /* Main container */
+        /* NEW: Contact button in top right */
+        .contact-button-tab {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 1001;
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid var(--royal-blue);
+            color: var(--royal-blue);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .contact-button-tab:hover {
+            background: rgba(65, 105, 225, 0.2);
+            transform: translateX(5px);
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Main container - adjusted top margin since navigation is removed */
         .main-container {
             width: 100%;
             max-width: 1400px;
@@ -206,7 +243,7 @@
             padding: 0 20px;
         }
         
-        /* Header with animated sun */
+        /* Header with Sun Integration */
         header {
             text-align: center;
             padding: 20px 0;
@@ -245,18 +282,19 @@
             100% { left: 100%; }
         }
         
+        /* Sun container */
         .sun-container {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            z-index: 0;
             width: 300px;
             height: 300px;
             display: flex;
             justify-content: center;
             align-items: center;
             pointer-events: none;
-            z-index: 0;
         }
         
         .sun-core {
@@ -264,23 +302,23 @@
             height: 120px;
             background: var(--sun-color);
             border-radius: 50%;
+            position: relative;
+            z-index: 2;
             box-shadow: 0 0 30px 12px var(--sun-glow);
             animation: sun-pulse 8s infinite ease-in-out;
-            z-index: 2;
-            position: relative;
         }
         
         .sun-rays {
             position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 300px;
             height: 300px;
+            z-index: 1;
             background: repeating-conic-gradient(from 0deg, 
                 var(--sun-ray-color) 0deg 3deg, 
                 transparent 3deg 20deg);
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
-            z-index: 1;
             animation: ray-rotate 30s linear infinite;
         }
         
@@ -309,6 +347,8 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 0 18px rgba(207, 64, 255, 0.15);
             transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
             text-align: center;
         }
         
@@ -551,49 +591,112 @@
             margin: 20px 0;
         }
         
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 768px) {
             .contact-options {
                 grid-template-columns: 1fr;
             }
+            
+            .top-nav {
+                gap: 12px;
+            }
+            
+            .nav-link {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+            }
         }
         
         @media (max-width: 600px) {
-            .back-button-tab, .home-button-tab {
+            body {
+                padding: 15px;
+            }
+            
+            .back-button-tab {
+                top: 15px;
+                left: 15px;
                 padding: 8px 15px;
                 font-size: 0.8rem;
             }
+            
             .main-container {
                 margin: 60px auto 0;
             }
-            .sun-core { width: 80px; height: 80px; }
-            .sun-container { width: 200px; height: 200px; }
+            
+            .sun-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .sun-core {
+                width: 80px;
+                height: 80px;
+                box-shadow: 0 0 20px 8px var(--sun-glow);
+            }
         }
         
+        /* Special handling for landscape mode on mobile */
         @media (max-height: 500px) and (orientation: landscape) {
-            .top-header h1 { font-size: 1.2rem; }
-            .back-button-tab, .home-button-tab { padding: 6px 12px; font-size: 0.8rem; }
-            .sun-core { width: 60px; height: 60px; }
+            .top-header {
+                padding: 10px 15px;
+                flex-direction: row;
+            }
+            
+            .top-header h1 {
+                font-size: 1.2rem;
+                padding: 0;
+                margin-top: 0;
+            }
+            
+            .back-button-tab {
+                top: 15px;
+                left: 15px;
+                padding: 6px 12px;
+            }
+            
+            .main-container {
+                margin: 50px auto 0;
+            }
+            
+            header {
+                min-height: 200px;
+            }
+            
+            .sun-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .sun-core {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .sun-rays {
+                width: 150px;
+                height: 150px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="grid-lines"></div>
     
-    <!-- Top Header -->
+    <!-- New top header with title -->
     <div class="top-header">
         <h1>Contact Dr. Oscar Eybers</h1>
     </div>
     
-    <!-- Navigation Buttons -->
     <a href="#" class="back-button-tab" id="backButton">
         <i class="fas fa-arrow-left"></i> Back
     </a>
     
-    <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-button-tab">
+    <!-- Orange Home button on the right side of the header -->
+    <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-button-tab" id="homeButton">
         <i class="fas fa-home"></i> Home
     </a>
-
+    
+     
     <div class="main-container">
         <header>
             <div class="sun-container">
@@ -613,9 +716,9 @@
                 <i class="fas fa-envelope"></i>
                 <h3>Email</h3>
                 <p>Reach out directly for professional inquiries</p>
-                <p><strong>oscar.eybers@up.ac.za</strong></p>
+                <p><strong>oeybers@uwc.ac.za</strong></p>
                 <div class="social-links">
-                    <a href="mailto:oscar.eybers@up.ac.za" class="social-link" title="Email">
+                    <a href="mailto:oeybers@uwc.ac.za" class="social-link" title="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
                     <a href="https://www.researchgate.net/profile/Oscar-Eybers" target="_blank" class="social-link" title="ResearchGate">
@@ -628,7 +731,7 @@
                 <i class="fas fa-university"></i>
                 <h3>Academic Profile</h3>
                 <p>View my research and publications</p>
-                <p><strong>University of Pretoria</strong></p>
+                <p><strong>University of the Western Cape</strong></p>
                 <div class="social-links">
                     <a href="https://www.researchgate.net/profile/Oscar-Eybers" target="_blank" style="display: flex; align-items: center; padding: 12px; background: rgba(207, 64, 255, 0.08); border-radius: 8px; color: var(--light); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(207, 64, 255, 0.2);">
                         <i class="fab fa-researchgate" style="font-size: 1.5rem; color: #00c2ff; margin-right: 10px;"></i>
@@ -684,25 +787,29 @@
             </div>
             
             <div class="error-message" id="errorMessage">
-                Sorry, there was an error sending your message. Please try again or contact directly at oscar.eybers@up.ac.za.
+                Sorry, there was an error sending your message. Please try again or contact directly at oeybers@uwc.ac.za.
             </div>
         </div>
     </div>
 
     <script>
+        // Back button functionality
         document.addEventListener('DOMContentLoaded', function() {
             const backButton = document.getElementById('backButton');
             if (backButton) {
                 backButton.addEventListener('click', function(e) {
                     e.preventDefault();
+                    // Check if there's a previous page in history
                     if (window.history.length > 1) {
                         window.history.back();
                     } else {
-                        window.location.href = 'https://oeybers-cpu.github.io/a_lit_models/';
+                        // If no history, redirect to home page
+                        window.location.href = '/';
                     }
                 });
             }
             
+            // Form submission handling
             const contactForm = document.getElementById('contactForm');
             const successMessage = document.getElementById('successMessage');
             const errorMessage = document.getElementById('errorMessage');
@@ -710,32 +817,52 @@
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
+                    
+                    // In a real implementation, you would send the form data to a server
+                    // For this demo, we'll just show the success message
+                    
+                    // Hide any previous messages
                     successMessage.style.display = 'none';
                     errorMessage.style.display = 'none';
                     
+                    // Simulate form submission
                     setTimeout(() => {
+                        // Reset form
                         contactForm.reset();
+                        
+                        // Show success message
                         successMessage.style.display = 'block';
-                        setTimeout(() => successMessage.style.display = 'none', 5000);
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 5000);
                     }, 500);
                 });
             }
             
-            // Restore scroll position
-            window.addEventListener('load', () => {
-                const scrollPos = sessionStorage.getItem('scrollPosition');
-                if (scrollPos) {
-                    window.scrollTo(0, parseInt(scrollPos));
+            // Store scroll position before leaving the page
+            window.addEventListener('beforeunload', function() {
+                sessionStorage.setItem('scrollPosition', window.scrollY);
+            });
+            
+            // Restore scroll position when returning to the page
+            window.addEventListener('load', function() {
+                var scrollPosition = sessionStorage.getItem('scrollPosition');
+                if (scrollPosition !== null) {
+                    window.scrollTo(0, parseInt(scrollPosition));
                     sessionStorage.removeItem('scrollPosition');
                 }
             });
             
-            window.addEventListener('beforeunload', () => {
-                sessionStorage.setItem('scrollPosition', window.scrollY);
+            // Handle orientation changes
+            window.addEventListener('orientationchange', function() {
+                // Reload on orientation change for better rendering
+                setTimeout(function() {
+                    window.location.reload();
+                }, 300);
             });
         });
     </script>
 </body>
 </html>
-
-Let me know if you'd like help adding real form submission (e.g., via EmailJS or Formspree), or want to generate additional pages (e.g., About, Models, Publications).
